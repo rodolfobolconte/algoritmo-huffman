@@ -1,0 +1,1 @@
+Simples texto a ser codificado atraves do codigo de Huffman utilizando arquivos de texto.
