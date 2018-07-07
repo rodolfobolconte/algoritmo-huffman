@@ -1,0 +1,1 @@
+Exemplo de frase a ser codificada a partir do codigo de Huffman utilizando arquivos de texto

@@ -2,6 +2,7 @@
 from heapq import heappush, heappop, heapify
 import collections
 from io import StringIO
+import base64
 
 # função do codificador de Huffman
 def encode(simbolos_e_frequencia):
@@ -67,20 +68,30 @@ def decode(frase_codificada, bits):
 
 
 # teste dessa função do codificador de Huffman, usando uma maneira simplória de implementar isso para um texto pequeno.
-frase_original = open("frase_original.txt", "r").read()
+#frase_original = open("frase_original.txt", "r").read()
+#frase_original = open("frase_original.txt", "r").read()
 
 
-simbolos_e_frequencia = collections.Counter(frase_original)
+imagem_original = open("q4b_algoritmo_huffman_com_arquivos_imagem_original.jpg", "rb")
+imagem_texto = base64.b64encode(imagem_original.read()).decode("utf8")
+
+arquivo_imagem_texto_original = open("q4b_algoritmo_huffman_com_arquivos_imagem_texto_original.txt", "w").writelines(imagem_texto)
+
+
+simbolos_e_frequencia = collections.Counter(imagem_texto)
 
 bits = encode(simbolos_e_frequencia)
-frase_codificada = convert(frase_original, bits)
-
-frase_codificada_txt = open("frase_codificada.txt", "w").writelines(frase_codificada)
+frase_codificada = convert(imagem_texto, bits)
 
 frase_decodificada = decode(frase_codificada, bits)
 
+arquivo_imagem_texto_codificado = open("q4b_algoritmo_huffman_com_arquivos_imagem_texto_codificado.txt", "w").writelines(frase_codificada)
 
-print("Frase Original:", frase_original)
+imagem_codificada = open("q4b_algoritmo_huffman_com_arquivos_imagem_codificada.jpg", "wb")
+imagem_codificada.write(base64.b64decode(frase_decodificada))
+imagem_codificada.close()
+
+"""print("Frase Original:", imagem_texto)
 print("Frase Codificada:", frase_codificada)
 print("Frase Decodificada:", frase_decodificada)
 
@@ -88,4 +99,4 @@ print("Frase Decodificada:", frase_decodificada)
 print("\nTabela Caractere-Bit:")
 print("Symbol\tWeight\tHuffman Code")
 for p in bits:
-	print ("%s\t\t%s\t\t%s" % (p[0], simbolos_e_frequencia[p[0]], p[1]))
+	print ("%s\t\t%s\t\t%s" % (p[0], simbolos_e_frequencia[p[0]], p[1]))"""

@@ -67,7 +67,7 @@ def decode(frase_codificada, bits):
 
 
 # teste dessa função do codificador de Huffman, usando uma maneira simplória de implementar isso para um texto pequeno.
-frase_original = open("frase_original.txt", "r").read()
+frase_original = open("q4a_algoritmo_huffman_com_arquivos_texto_original.txt", "r").read()
 
 
 simbolos_e_frequencia = collections.Counter(frase_original)
@@ -75,7 +75,7 @@ simbolos_e_frequencia = collections.Counter(frase_original)
 bits = encode(simbolos_e_frequencia)
 frase_codificada = convert(frase_original, bits)
 
-frase_codificada_txt = open("frase_codificada.txt", "w").writelines(frase_codificada)
+frase_codificada_txt = open("q4a_algoritmo_huffman_com_arquivos_texto_codificado.txt", "w").writelines(frase_codificada)
 
 frase_decodificada = decode(frase_codificada, bits)
 
