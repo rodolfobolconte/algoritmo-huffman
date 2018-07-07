@@ -42,24 +42,24 @@ def decode(frase_codificada, bits):
 	
 	frase_decodificada = ''
 
-	temporario = ''
+	caractere_temporario = ''
 
-	inicio = 0
+	posicao_inicio = 0
 
-	for caractere in range(len(frase_codificada) + 1):
+	for posicao_fim in range(len(frase_codificada) + 1):
 		igual = 0
 		for bit in bits:
-			if frase_codificada[inicio:caractere] == bit[1] and inicio != len(frase_codificada) - 1:
+			if frase_codificada[posicao_inicio:posicao_fim] == bit[1] and posicao_inicio != len(frase_codificada) - 1:
 				igual += 1
-				temporario = bit[0]
+				caractere_temporario = bit[0]
 
-			elif frase_codificada[inicio:caractere] == bit[1] and inicio == len(frase_codificada) - 1:
+			elif frase_codificada[posicao_inicio:posicao_fim] == bit[1] and posicao_inicio == len(frase_codificada) - 1:
 				igual += 1
-				temporario = bit[0]
+				caractere_temporario = bit[0]
 
 		if igual == 1:
-			frase_decodificada += temporario
-			inicio = caractere
+			frase_decodificada += caractere_temporario
+			posicao_inicio = posicao_fim
 		else:
 			continue
 
